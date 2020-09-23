@@ -9,6 +9,7 @@ import util.ShowPokerUtil;
 import javax.swing.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameFrame extends JFrame {
     private MyPanel myPanel;
@@ -19,6 +20,9 @@ public class GameFrame extends JFrame {
     private ArrayList<PokerJLable> pokerJLables = new ArrayList<>();
     private static final int WIDTH=1000;
     private static final int HEIGHT=800;
+    private JLabel jiaoDiZhu;
+    private JLabel buQiang;
+    private JLabel jiShiQi;
 
 
     public GameFrame(String username, Socket socket)  {
@@ -48,17 +52,54 @@ public class GameFrame extends JFrame {
         for (Player player : players) {
             if(player.getName().equals(username)){
                 currentPlayer = player;
-                ArrayList<Poker> pokerList = currentPlayer.getPokerList();
-                for (Poker poker : pokerList) {
-                    PokerJLable pokerJLable = new PokerJLable(poker.getId(), poker.getName(), poker.getNum());
-                    pokerJLable.turnUp();
-                    this.myPanel.add(pokerJLable);
-                    this.pokerJLables.add(pokerJLable);
-                    this.myPanel.setComponentZOrder(pokerJLable,0);
-                    ShowPokerUtil.show(pokerJLable,200+m++*25,600);
-
                 }
-            }
+        }
+        ArrayList<Poker> pokerList = currentPlayer.getPokerList();
+        for (Poker poker : pokerList) {
+            PokerJLable pokerJLable = new PokerJLable(poker.getId(), poker.getName(), poker.getNum());
+            pokerJLable.turnUp();
+            this.myPanel.add(pokerJLable);
+            this.pokerJLables.add(pokerJLable);
+            this.myPanel.setComponentZOrder(pokerJLable,0);
+            ShowPokerUtil.show(pokerJLable,200+m++*25,600);
+        }
+
+
+        if(currentPlayer.getId()==0){
+                getLord();
         }
     }
+
+
+
+
+    public void getLord(){
+        jiaoDiZhu = new JLabel();
+
+        jiaoDiZhu.setBounds(350,500,104,46);
+        jiaoDiZhu.setIcon(new ImageIcon("src\\main\\java\\imgs\\jiaodizhu.png"));
+        this.myPanel.add(jiaoDiZhu);
+
+
+         buQiang = new JLabel();
+
+         buQiang.setBounds(460,500,184,46);
+         buQiang.setIcon(new ImageIcon("src\\main\\java\\imgs\\buqiang.png"));
+         this.myPanel.add(buQiang);
+
+         jiShiQi = new JLabel();
+
+         jiShiQi.setBounds(350,450,40,43);
+       //  jiShiQi.setIcon(new ImageIcon("src\\main\\java\\imgs\\clock.png"));
+         jiShiQi.setText("54");
+         this.myPanel.add(jiShiQi);
+
+
+         this.repaint();
+
+
+    }
+
+
+
 }
