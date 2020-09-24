@@ -7,7 +7,7 @@ import lombok.Data;
 import java.net.Socket;
 import java.util.ArrayList;
 
-@Data
+
 public class Player {
     private int id;
     private String name;

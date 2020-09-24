@@ -20,6 +20,8 @@ public class LoginFrame extends JFrame {
          this.usernameLable = new JLabel("请在下面输入框输入用户名");
          this.usernameInput = new JTextField();
          this.button = new JButton("登录");
+
+
          // 设置窗口大小
          this.setSize(600,300);
          // 设置窗口初始化在屏幕的位置
