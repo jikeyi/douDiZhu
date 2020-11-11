@@ -43,6 +43,9 @@ public class Player {
         this.socket = socket;
     }
 
+    public Player() {
+    }
+
     public Player(int id) {
         this.id = id;
     }
@@ -81,5 +84,15 @@ public class Player {
 
     public void setSocket(Socket socket) {
         this.socket = socket;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pokerList=" + pokerList +
+                ", socket=" + socket +
+                '}';
     }
 }
